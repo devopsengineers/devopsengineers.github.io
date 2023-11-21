@@ -1,0 +1,9 @@
+{
+    "name": "Lee Whalen",
+    "image" : "img/law_avatar.jpg",
+    "bio": "Chief, cook, and bottle-washer at Fuzzy Logic",
+    "social": [
+        { "github": "https://github.com/law" }
+    ]
+}
+
