@@ -11,12 +11,12 @@ title = "Devops Engineers"
   # logo = "img/logo.png"
   # secondaryLogo = "img/secondary-logo.png"
   description = "Devops Engineers Online Community"
-  copyright = "Copy, _right?_ :thinking_face:"
+  copyright = "GPL-3.0-or-later"
 
 [author]
   name = "Devops Engineers"
   image = "img/thisisfine.png"
-  headline = "I'm only human"
+  headline = "Automate all the things"
   bio = "A little bit about you"
   links = [
     { email = "mailto:devopsengineers@gmail.com" },
