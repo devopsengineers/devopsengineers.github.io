@@ -11,14 +11,14 @@
 # ordered by weight from lowest to highest.
 
 [[main]]
-  name = "About"
-  pageRef = "about"
-  weight = 10
+name = "About"
+pageRef = "about"
+weight = 10
 
-[[main]]
-  name = "Request Slack Invite"
-  weight = 20
-  pageRef = "slackinvite"
+# [[main]]
+#   name = "Request Slack Invite"
+#   weight = 20
+#   pageRef = "slackinvite"
 
 #[[main]]
 #  name = "example sub-menu 1"
@@ -60,16 +60,16 @@
 
 
 [[footer]]
-  name = "Tags"
-  pageRef = "tags"
-  weight = 10
+name = "Tags"
+pageRef = "tags"
+weight = 10
 
 [[footer]]
-  name = "Categories"
-  pageRef = "categories"
-  weight = 20
+name = "Categories"
+pageRef = "categories"
+weight = 20
 
 [[footer]]
-  name = "Authors"
-  pageRef = "authors"
-  weight = 30
+name = "Authors"
+pageRef = "authors"
+weight = 30
