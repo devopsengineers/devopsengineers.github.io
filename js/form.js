@@ -1,38 +1,43 @@
 function validation(email) {
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
+  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
 }
 
-document.getElementById('submit-email-form').addEventListener('click', function(event) {
+document.querySelectorAll(".submit-email-form").forEach(function (button) {
+  button.addEventListener("click", function (event) {
     event.preventDefault();
 
-    var email = document.querySelector('#submit-email input').value;
+    var modal = button.closest(".relative");
+    var email = modal.querySelector('input[type="email"]').value;
 
     if (validation(email)) {
-        fetch('https://60jg71nvag.execute-api.us-east-1.amazonaws.com/prod/invite', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email: email }),
+      fetch("https://60jg71nvag.execute-api.us-east-1.amazonaws.com/prod/invite", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: email }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // Update these selectors to be specific to the modal
+          var modalId = modal.id;
+          if (data.message === "Invitation sent.") {
+            modal.querySelector("#invitation-sent").style.display = "block";
+          } else if (data.message === "Invitation pending.") {
+            modal.querySelector("#invitation-pending").style.display = "block";
+          } else if (data.message === "Invitation already.") {
+            modal.querySelector("#invitation-already").style.display = "block";
+          } else {
+            modal.querySelector("#invitation-error").style.display = "block";
+          }
         })
-        .then(response => response.json())
-        .then(data => {
-            if(data.message === "Invitation sent.") {
-                document.getElementById('invitation-sent').style.display = 'block';
-            } else if(data.message === "Invitation pending.") {
-                document.getElementById('invitation-pending').style.display = 'block';
-            } else if(data.message === "Invitation already.") {
-                document.getElementById('invitation-already').style.display = 'block';
-            } else {
-                document.getElementById('invitation-error').style.display = 'block';
-            }
-        })
-        .catch(error => {
-            document.getElementById('invitation-error').style.display = 'block';
-            console.error('Error:', error);
+        .catch((error) => {
+          modal.querySelector("#invitation-error").style.display = "block";
+          console.error("Error:", error);
         });
     } else {
-        document.getElementById('invitation-email-format').style.display = 'block';
+      modal.querySelector("#invitation-email-format").style.display = "block";
     }
+  });
 });
