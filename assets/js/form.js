@@ -36,3 +36,44 @@ document.getElementById('submit-email-form').addEventListener('click', function(
         document.getElementById('invitation-email-format').style.display = 'block';
     }
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+  var modal = document.getElementById("slackModal");
+  var btn = document.querySelectorAll(".slackReqModalBtn");
+  var crossBtn = document.getElementById("slackCrossBtn");
+  var closeBtn = document.getElementById("slackCloseBtn");
+  var slacReqMessage = document.querySelectorAll(".slack-req-message");
+
+
+  // btn.addEventListener("click", function(e) {
+  //   modal.classList.remove("hidden");
+  // });
+
+  btn.forEach(function(trigger) {
+    trigger.addEventListener("click", function() {
+      modal.classList.remove("hidden");
+    });
+  });
+
+  crossBtn.addEventListener("click", function() {
+    modal.classList.add("hidden");
+    slacReqMessage.forEach(function(element) {
+    element.style.display = "none";
+  });
+
+  });
+
+  closeBtn.addEventListener("click", function(e) {
+    modal.classList.add("hidden");
+    slacReqMessage.forEach(function(element) {
+    element.style.display = "none";
+  });
+  });
+
+  window.addEventListener("click", function(event) {
+    if (event.target === modal) {
+      modal.classList.add("hidden");
+    }
+  });
+
+});
