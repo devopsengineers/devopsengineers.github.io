@@ -62,19 +62,4 @@
   {{ with resources.Get "js/form.js" }}
   <script defer language="javascript" type="text/javascript"  src="{{ .RelPermalink }}"></script>
   {{ end }}
-
-  <div>
-    <p>Submit your email address and you will get an invite shortly thereafter with a link to the Slack channel.</p>
-    <p id="invitation-sent" style="display:none;margin-bottom:0px;">Invitation sent! You should get an email shortly!</p>
-    <p id="invitation-pending" style="display:none;margin-bottom:0px;">Your invitation is still pending!</p>
-    <p id="invitation-already" style="display:none;margin-bottom:0px;">You are already on the team!</p>
-    <p id="invitation-error" style="display:none;margin-bottom:0px;">There was an error...please try again later.</p>
-    <p id="invitation-email-format" style="display:none;margin-bottom:0px;">Your email appears invalid.</p>
-
-    <form id="submit-email">
-        <input type="email" name="email" placeholder="Email Address" autocomplete="off">
-        <button id="submit-email-form" type="button">Request</button>
-    </form>
-</div>
-
 </footer>

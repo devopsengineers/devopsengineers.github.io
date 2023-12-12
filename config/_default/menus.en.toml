@@ -15,11 +15,6 @@
   pageRef = "about"
   weight = 10
 
-[[main]]
-  name = "Request Slack Invite"
-  weight = 20
-  pageRef = "slackinvite"
-
 #[[main]]
 #  name = "example sub-menu 1"
 #  parent = "Parent"
