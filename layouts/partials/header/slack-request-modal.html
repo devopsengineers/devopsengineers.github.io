@@ -1,0 +1,94 @@
+<!-- HTML Structure for Modal -->
+<div id="slackModal" class="fixed inset-0 flex items-start justify-center z-50 hidden p-2">
+  
+  <div style="background-color: white; width: 500px; height: fit-content" class="mx-auto z-50 rounded mt-20">
+    <!-- Modal content with white background -->
+    <div class="modal-content py-2 text-left bg-white rounded shadow-lg">
+
+   
+      <!-- Close button -->
+      <div class="py-2 px-6 flex justify-between items-center">
+        <p style="color: #333;">Request Invitation</p>
+        <button style="color: #333;" id="slackCrossBtn" class="color-black text-3xl font-bold leading-none">x</button>
+      </div>
+      <hr style="color: #d6d6d6;"/>
+      
+      <div class="px-6 py-4">
+        <div>
+          <div style="color: #333; font-size: 14px;">
+            <p >Submit your email address and you will get an invite shortly thereafter with a link to the Slack channel.</p>
+            <p class="slack-req-message" id="invitation-sent" style="display:none;margin-bottom:0px; color: green;">Invitation sent! You should get an email shortly!</p>
+            <p  class="slack-req-message"id="invitation-pending" style="display:none;margin-bottom:0px;">Your invitation is still pending!</p>
+            <p class="slack-req-message"id="invitation-already" style="display:none;margin-bottom:0px; color: yellow;">You are already on the team!</p>
+            <p class="slack-req-message"id="invitation-error" style="display:none;margin-bottom:0px; color: red;">There was an error...please try again later.</p>
+            <p class="slack-req-message"id="invitation-email-format" style="display:none;margin-bottom:0px; color: red;">Your email appears invalid.</p>
+          </div>
+      
+          <form id="submit-email">
+            <div class="py-4">
+              <input id="slackInviteInputsss" style="color: #1E293B;" class="w-full rounded" type="email" name="email" placeholder="Email Address" autocomplete="off">
+            </div>
+              <div class="flex justify-end">
+                <button class="p-2 rounded text-base" style="background: #1E293B;" id="submit-email-form" type="button">Request</button>
+              </div>
+          </form>
+      </div>
+      </div>
+      <!-- Input field -->
+ 
+      <!-- Submit button -->
+     
+    </div>
+  </div>
+</div>
+
+{{ with resources.Get "js/form.js" }}
+ <script defer language="javascript" type="text/javascript"  src="{{ .RelPermalink }}"></script>
+ {{ end }}
+
+<!-- JavaScript Logic for Modal -->
+<script>
+// JavaScript Logic for Modal
+document.addEventListener("DOMContentLoaded", function() {
+  var modal = document.getElementById("slackModal");
+  var btn = document.querySelectorAll(".slackReqModalBtn");
+  var crossBtn = document.getElementById("slackCrossBtn");
+  var closeBtn = document.getElementById("slackCloseBtn");
+  var slacReqMessage = document.querySelectorAll(".slack-req-message");
+
+  
+  // btn.addEventListener("click", function(e) {
+  //   modal.classList.remove("hidden");
+  // });
+
+  btn.forEach(function(trigger) {
+    trigger.addEventListener("click", function() {
+      modal.classList.remove("hidden");
+    });
+  });
+  
+  crossBtn.addEventListener("click", function() {
+    modal.classList.add("hidden");
+    slacReqMessage.forEach(function(element) {
+    element.style.display = "none";
+  });
+    
+  });
+
+  closeBtn.addEventListener("click", function(e) {
+    modal.classList.add("hidden");
+    slacReqMessage.forEach(function(element) {
+    element.style.display = "none";
+  });
+  });
+  
+  window.addEventListener("click", function(event) {
+    if (event.target === modal) {
+      modal.classList.add("hidden");
+    }
+  });
+
+});
+</script>
+
+<!-- Button to open the modal -->

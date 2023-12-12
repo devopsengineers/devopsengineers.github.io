@@ -1,5 +1,6 @@
 <div style="padding-left:0;padding-right:0;padding-top:2px;padding-bottom:3px"
     class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start space-x-3">
+    {{ partial "header/slack-request-modal.html" }}
     {{ if .Site.Params.Logo }}
     {{ $logo := resources.Get .Site.Params.Logo }}
     {{ if $logo }}
@@ -29,7 +30,13 @@
             {{ range .Site.Menus.main }}
             {{ partial "header/header-option.html" . }}
             {{ end }}
+            <p  class="slackReqModalBtn cursor-pointer text-base font-medium text-gray-500 hover:text-gray-900" title="{{ .Title }}">
+                Request Invitation
+              </p>
+              
             {{ end }}
+
+
 
             {{ partial "translations.html" . }}
 
@@ -88,7 +95,7 @@
 
         <label id="menu-button" for="menu-controller" class="block">
             <input type="checkbox" id="menu-controller" class="hidden" />
-            <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+            <div id="open_menu" class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
                 {{ partial "icon.html" "bars" }}
             </div>
             <div id="menu-wrapper" style="padding-top:5px;"
@@ -98,6 +105,7 @@
 
                     <li>
                         <span
+                        id="close_menu"
                             class="cursor-pointer inline-block align-text-bottom hover:text-primary-600 dark:hover:text-primary-400">{{
                             partial
                             "icon.html"
@@ -108,9 +116,18 @@
                     {{ range .Site.Menus.main }}
 
                     {{ partial "header/header-mobile-option.html" . }}
+                  
 
                     {{ end }}
+
+                    
+             
                     {{ end }}
+                    <p  class="slackReqModalBtn cursor-pointer text-base font-medium text-gray-500 hover:text-gray-900" title="{{ .Title }}">
+                        Request Invitation
+                      </p>
+                      
+                  
 
                 </ul>
                 {{ if .Site.Menus.subnavigation }}
@@ -161,6 +178,7 @@
         </a>
         {{ end }}
     </div>
+   
 </div>
 {{ end }}
 
@@ -173,5 +191,25 @@
             $(e).children('p').addClass('active');
         });
     })();
+
+
+// JavaScript Logic for Modal
+document.addEventListener("DOMContentLoaded", function() {
+    var openMenu = document.getElementById("open_menu");
+    var menuWrapper = document.getElementById("menu-wrapper");
+    var closeMenu = document.getElementById("close_menu")
+    openMenu.addEventListener("click", function() {
+        menuWrapper.style.visibility = "visible";
+        menuWrapper.style.opacity = "1";
+
+    });
+    closeMenu.addEventListener("click", function() {
+        menuWrapper.style.visibility = "hidden";
+        menuWrapper.style.opacity = "0";
+
+    });
+
+  });
+
 </script>
 {{ end }}
