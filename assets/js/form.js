@@ -1,79 +1,85 @@
-function validation(email) {
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
+// Function to validate email using regex
+function validateEmail(email) {
+  const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return regex.test(String(email).toLowerCase());
 }
 
+// Event listener for form submission
 document.getElementById('submit-email-form').addEventListener('click', function(event) {
-    event.preventDefault();
+  event.preventDefault();
 
-    var email = document.querySelector('#submit-email input').value;
+  const email = document.querySelector('#submit-email input').value;
 
-    if (validation(email)) {
-        fetch('https://60jg71nvag.execute-api.us-east-1.amazonaws.com/prod/invite', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email: email }),
-        })
-        .then(response => response.json())
-        .then(data => {
-            if(data.message === "Invitation sent.") {
-                document.getElementById('invitation-sent').style.display = 'block';
-            } else if(data.message === "Invitation pending.") {
-                document.getElementById('invitation-pending').style.display = 'block';
-            } else if(data.message === "Invitation already.") {
-                document.getElementById('invitation-already').style.display = 'block';
-            } else {
-                document.getElementById('invitation-error').style.display = 'block';
-            }
-        })
-        .catch(error => {
-            document.getElementById('invitation-error').style.display = 'block';
-            console.error('Error:', error);
-        });
-    } else {
-        document.getElementById('invitation-email-format').style.display = 'block';
-    }
+  if (validateEmail(email)) {
+    fetch('https://60jg71nvag.execute-api.us-east-1.amazonaws.com/prod/invite', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email: email }),
+    })
+    .then(response => response.json())
+    .then(data => handleResponse(data))
+    .catch(error => handleError(error));
+  } else {
+    document.getElementById('invitation-email-format').style.display = 'block';
+  }
 });
 
+// Handle response from fetch
+function handleResponse(data) {
+  if (data.message === "Invitation sent.") {
+    displayElement('invitation-sent');
+  } else if (data.message === "Invitation pending.") {
+    displayElement('invitation-pending');
+  } else if (data.message === "Invitation already.") {
+    displayElement('invitation-already');
+  } else {
+    displayElement('invitation-error');
+  }
+}
+
+// Handle error from fetch
+function handleError(error) {
+  displayElement('invitation-error');
+  console.error('Error:', error);
+}
+
+// Display a specific element
+function displayElement(elementId) {
+  document.getElementById(elementId).style.display = 'block';
+}
+
+// Event listener for document ready
 document.addEventListener("DOMContentLoaded", function() {
-  var modal = document.getElementById("slackModal");
-  var btn = document.querySelectorAll(".slackReqModalBtn");
-  var crossBtn = document.getElementById("slackCrossBtn");
-  var closeBtn = document.getElementById("slackCloseBtn");
-  var slacReqMessage = document.querySelectorAll(".slack-req-message");
+  const modal = document.getElementById("slackModal");
+  const btns = document.querySelectorAll(".slackReqModalBtn");
+  const crossBtn = document.getElementById("slackCrossBtn");
+  const closeBtn = document.getElementById("slackCloseBtn");
+  const slackReqMessages = document.querySelectorAll(".slack-req-message");
 
-
-  // btn.addEventListener("click", function(e) {
-  //   modal.classList.remove("hidden");
-  // });
-
-  btn.forEach(function(trigger) {
-    trigger.addEventListener("click", function() {
-      modal.classList.remove("hidden");
-    });
+  btns.forEach(btn => {
+    btn.addEventListener("click", () => toggleModal(modal, false));
   });
 
-  crossBtn.addEventListener("click", function() {
-    modal.classList.add("hidden");
-    slacReqMessage.forEach(function(element) {
-    element.style.display = "none";
-  });
+  crossBtn.addEventListener("click", () => toggleModal(modal, true));
+  closeBtn.addEventListener("click", () => toggleModal(modal, true));
 
-  });
-
-  closeBtn.addEventListener("click", function(e) {
-    modal.classList.add("hidden");
-    slacReqMessage.forEach(function(element) {
-    element.style.display = "none";
-  });
-  });
-
-  window.addEventListener("click", function(event) {
+  window.addEventListener("click", event => {
     if (event.target === modal) {
-      modal.classList.add("hidden");
+      toggleModal(modal, true);
     }
   });
-
 });
+
+// Toggle modal display
+function toggleModal(modal, hide) {
+  if (hide) {
+    modal.classList.add("hidden");
+  } else {
+    modal.classList.remove("hidden");
+  }
+  document.querySelectorAll(".slack-req-message").forEach(element => {
+    element.style.display = "none";
+  });
+}
