@@ -31,4 +31,12 @@
   {{/* Extend footer - eg. for extra scripts, etc. */}} {{ if templates.Exists "partials/extend-footer.html" }} {{ partialCached "extend-footer.html" . }} {{ end }} {{ with resources.Get "js/form.js" }}
   <script defer language="javascript" type="text/javascript" src="{{ .RelPermalink }}"></script>
   {{ end }}
+
+  {{ with $.Site.Params.matomo }}
+    {{ if isset $.Site.Params "matomo" }}
+      {{ $matomoJS := resources.Get "js/matomo.js" }}
+      {{ $matomoJS = $matomoJS | resources.ExecuteAsTemplate "matomo.js" (dict "MatomoURL" .url "MatomoSiteId" .siteId) }}
+    <script defer language="javascript" type="text/javascript"  src="{{ $matomoJS.RelPermalink }}"></script>
+    {{ end }}
+  {{ end }}
 </footer>

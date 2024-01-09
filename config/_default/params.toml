@@ -113,6 +113,10 @@ smartTOCHideUnfocusedChildren = true
   cardView = false
   cardViewScreenWidth = false
 
+[matomo]
+url = "https://stats.fuzzy-logic.org"
+siteId = "4"
+
 [firebase]
   # apiKey = "XXXXXX"
   # authDomain = "XXXXXX"
