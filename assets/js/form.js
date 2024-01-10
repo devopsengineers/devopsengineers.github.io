@@ -3,12 +3,22 @@ function validation(email) {
   return re.test(String(email).toLowerCase());
 }
 
+
+function validation(email) {
+  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+}
+
 document.querySelectorAll(".submit-email-form").forEach(function (button) {
   button.addEventListener("click", function (event) {
     event.preventDefault();
 
     var modal = button.closest(".relative");
     var email = modal.querySelector('input[type="email"]').value;
+
+    // Show 'please wait' message
+    var waitMessage = modal.querySelector("#invitation-wait");
+    if (waitMessage) waitMessage.style.display = "block";
 
     if (validation(email)) {
       fetch("https://60jg71nvag.execute-api.us-east-1.amazonaws.com/prod/invite", {
@@ -31,13 +41,21 @@ document.querySelectorAll(".submit-email-form").forEach(function (button) {
           } else {
             modal.querySelector("#invitation-error").style.display = "block";
           }
+
+          // Hide 'please wait' message
+          if (waitMessage) waitMessage.style.display = "none";
         })
         .catch((error) => {
           modal.querySelector("#invitation-error").style.display = "block";
           console.error("Error:", error);
+
+          // Hide 'please wait' message
+          if (waitMessage) waitMessage.style.display = "none";
         });
     } else {
       modal.querySelector("#invitation-email-format").style.display = "block";
+      // Hide 'please wait' message
+      if (waitMessage) waitMessage.style.display = "none";
     }
   });
 });
