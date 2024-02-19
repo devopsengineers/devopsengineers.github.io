@@ -8,9 +8,9 @@ authors:
   - law
 showAuthorsBadges : true 
 ---
-A great tech resume isn't a rote recitation of "what I did, when I did it", it's about crafting a story and making a connection with the string of humans handling it from the time you hit 'Submit', to the time you click 'Accept' on that first interview invite.  Stories are more effective when they're relatable to wider groups of people, which can be difficult when they're written with lots of jargon.  Tech resumes, on average, tend to be jargon-heavy, which inhibits understanding and relatability.  If the resume is written with ZERO jargon, it can get passed over by the various keyword-scanning and AI-filtering steps in the modern hiring pipeline.  Let's look at some rarely-used ways to refactor that resume into a tool that connects with people, but also makes it past the benevolent AI silently judging your career accomplishments.  
+A great tech resume isn't just a rote recitation of "what I did, when I did it", it's a vehicle for crafting a story and making a connection with the string of humans handling it from the time you hit 'Submit', to the time you click 'Accept' on that first interview invite.  Stories are more effective when they're relatable to wider groups of people, which can be difficult when they're written with lots of jargon.  Tech resumes, on average, tend to be jargon-heavy, which inhibits understanding and relatability.  If the resume is written with ZERO jargon, it can get passed over by the various keyword-scanning and AI-filtering steps in the modern hiring pipeline.  Let's look at some rarely-used ways to refactor that resume into a tool that connects with people, but also makes it past the benevolent AI silently judging your career accomplishments.  
 
-Here are some example resume-entries representative of _very common anti-patterns_ in the hundreds of tech resumes we've helped improve over the years: 
+Here are some examples representative of _very common anti-patterns_ in the hundreds of tech resumes we've helped improve over the years: 
 
 ```
 Core Competencies
@@ -54,9 +54,9 @@ Sys Admin and Network Engineer, SomeCorp, 01/2007 - 09/2009
 ```
 
 ## Consider the AI/Automated Scanning Tech
-First thing, if your resume has fancy colors and icons and typography, get rid of them.  They are a relic of the before-times when resumes were printed out as-received, and 'standing out' was a possibility, and even desired.  In this age of Applicant Tracking Systems (ATS) and AI relevancy-filtering, machines are going to have first 'eyes' on your resume.  You don't want a bug in the ingestion software to keep you from a potential new gig, so make it easy for the all-benevolent, all-seeing AI to parse, standardize, and format your resume.  The general rule is, if you can convert the resume to plain, boring, unformatted text and STILL have it maintain a good flow - sections delineated by judicious use of whitespace, etc - you're on the right track.  When you do go back to rich text, the fanciest you should go is to add underlines, italics, bold, etc.  
+First thing, if your resume has fancy colors and icons and typography, get rid of them.  They are a relic of the before-times when resumes were printed out as-received and 'standing out' was a possibility.  In this age of Applicant Tracking Systems (ATS) and AI relevancy-filtering, machines are going to have first 'eyes' on your resume 100% of the time.  You don't want a bug in the ingestion software to keep you from a potential new gig, so make it easy for the all-benevolent, all-seeing AI to parse, standardize, and format your resume.  The general rule is, if you can convert the resume to plain, boring, unformatted text and STILL have it maintain a good visual flow - sections delineated by judicious use of whitespace, etc - you're on the right track.  When you do go back to rich text, the fanciest you should go is to add underlines, italics, bold, etc.  
 
-As far as making it past the keyword-scanning aspects, the 'Core Competencies' section is great for this.  It can safely be moved to the bottom, as humans will never read that far, but a keyword-scanner will definitely hit on anything in it.  This lets you get rid of bullet-points like the following: 
+As far as making it past the keyword-scanning bots, the 'Core Competencies' section is great for this.  It can safely be moved to the bottom, as humans will never read that far, but a keyword-scanner will definitely hit on anything it contains.  This lets you get rid of bullet-points like the following: 
 
 `* Provisioned & deploy AWS services such as SageMaker, Glue, EMR, Lambda, SQS, SNS, S3, EC2, & ElasticSearch into 2 production accounts`
 
@@ -67,7 +67,7 @@ and cram all that buzzword-goodness into your Core Competencies section.
 A good format to consider is:
 
 ```
-3-5 sentences about the company, anything special about their stack, 
+2-4 sentences about the company, anything special about their stack, 
 and the overall "how these people are better for my involvement there" 
 summary, and then:
 - bullet-points
@@ -82,7 +82,7 @@ summary, and then:
 - across
 ```
 
-you want every bullet-point in your resume to reference a number of some kind: either 'dollars earned', or 'time saved'.
+Here is the critical point: you want every bullet-point in your resume to reference a number of some kind: either 'dollars earned', or 'time saved'.
 
 For example: 
 
@@ -99,14 +99,14 @@ Contrast that example with:
 This is excellent!  It briefly mentions 'the thing you worked with', and then puts a nice five-figure dollar number right at the end.  This is crucial for making that human connection.  
 
 ## Consider The Human
-Once the AI has had its way with your resume, and it is delivered to an Actual Human™, more often than not that human is _not_ going to be particularly technical.  Put yourself in their shoes for a minute:  They'll be going cross-eyed, staring at dozens of resumes full of unfamiliar tech-jargon, with no real way to relate 'the thing that was done' back to something they understand or care about.  The 'dollars or time saved' recommendation above bypasses this entirely.  You and your peers may care what a 'kubernetes' is, but normal people don't even know how to pronounce it.  
+Once the AI has had its way with your resume and it is delivered to an Actual Human™, that human is _not_ going to be particularly technical.  Put yourself in their shoes for a minute:  This person will be going cross-eyed, staring at dozens of resumes full of unfamiliar tech-jargon, with no real way to relate 'the thing that was done' back to something they understand or care about.  The 'dollars earned or time saved' point above bypasses this entirely.  You and your peers may care what a 'kubernetes' is, but normal people don't even know how to pronounce it.  
 
 When your bullet-point says "I deployed a flibbitygibbit with the shnozwarfle _and saved the company $30k/mo every month until the end of time_", that's a relatable (and therefor memorable) sentence.  Jargon only impresses your fellow nerds, and at this stage your resume is so far away from being parsed by nerd-eyeballs it might as well be on the far side of the moon.  Make a connection with the normal human who has to wade through mountains of jargon and nerd-talk, and you'll land interviews.  
 
-This point is so important, we heartily recommend that if you can't get down to 'a number' (dollars earned, time saved, etc) for a bullet-point, strongly consider removing the line from your resume.  For numbers you don't know, you can make an in-good-faith guesstimation.  You can also reach out to old bosses/coworkers and ask them to help you ballpark a number.  You don't have to defend this in a court of law or for a doctoral dissertation.  No one is going to leap over the interview table yelling "FRAUD!  YOU CLAIM SAVINGS OF 10 hours per week per engineer AND IT WAS ONLY 7!!!!"
+This point is so important, we recommend that if you can't get down to 'a number' (dollars earned, time saved, etc) for a bullet-point, strongly consider removing it from your resume.  For numbers you don't know, you can make an in-good-faith guesstimation.  You can also reach out to old bosses/coworkers and ask them to help you ballpark a number.  You don't have to defend this in a court of law or for a doctoral dissertation.  No one is going to leap over the interview table yelling "FRAUD!  YOU CLAIM SAVINGS OF 10 hours per week per engineer AND IT WAS ONLY 7!!!!"
 
 ## Busting The Length Myth
-The most pernicious 'rule' from the beforetimes that needs to go, is 'your resume should never be longer than one or two pages'.  This may be fine for folks early in their careers, but for those of us who have been doing it awhile, it forces us to minimize our valuable experience and professional contributions.  This field values results, and if it takes you 5-10 pages to communicate _otherwise concisely-formatted_ results, so much the better.  "All killer, no filler" should be the guiding principle.  
+The most pernicious needs-to-go 'rule' from the beforetimes is, 'your resume should never be longer than one or two pages'.  This may be fine for folks (very) early in their careers, but for those of us who have been in the trenches for some time, abiding forces us to minimize our valuable experience and professional contributions.  This field values results, and if it takes you 5-10 pages to communicate _otherwise concisely-formatted_ results, so much the better.  "All killer, no filler" should be the guiding principle.  
 
 ## The Rewrite
 Here's one potential way to rewrite the sample-resume at the beginning, using the tips outlined here:
@@ -180,10 +180,10 @@ Programming: SQL, C, Java, PHP, Python, Bash, TCL, Perl, MATLAB, REST, SOAP/XML,
 
 ```
 ## Final Thoughts
-In crafting an impactful engineering resume, the goal is not to blithely list past projects and employers, but to craft a compelling story that bridges technology and human interest.  A narrative approach such as this transforms a resume from a mere business formality into a conversation starter, emphasizing not just what you've done, but how your contributions have measurably advanced your past employers' missions and bottom lines.  By focusing on tangible outcomes — dollars earned, time saved, effiencies gained - you make your expertise relatable at a level far greater than buzzword-driven development and nifty-nerd-cred projects.  
+In crafting an impactful engineering resume, the goal is not to blithely list past projects and employers, but to craft a compelling story that bridges technology and human interest.  A narrative approach such as this transforms a resume from a mere business formality into a conversation starter, emphasizing not just what you've done, but how your contributions have measurably advanced your past employers' missions and bottom lines.  By focusing on tangible outcomes — dollars earned, time saved, efficiencies gained - you make your expertise relatable at a level far greater than buzzword-driven development and nifty-nerd-cred projects.  
 
 Done well, a resume is an opportunity to showcase your unique blend of technical skills and professional impact.  By following the strategies outlined above, you're not just submitting a bland list of roles; you're creating interest around how you can contribute to the success of your next team, making your application memorable in a sea of jargon-laden documents.  
 
 Make it easy for the humans at the far end of the hiring pipeline to imagine the tangible benefits you can bring to their work, ensuring it speaks not only to the AI gatekeepers but also to the people on the other side of the pipeline who are looking for someone exactly like you, and watch those interviews stack up.
 
-Want it 'done for you'?  [Resume Raiders](https://resumeraiders.com) graciously gives members of this community a 15% discount on their services with the checkout code "XANDY".  Tell Dave we sent you!
+Want it 'done for you'?  [Resume Raiders](https://resumeraiders.com) (no affiliation or financial interest other than 'lots of us have used their services and thoroughly enjoyed the result') graciously gives members of this community a 15% discount on their services with the checkout code "XANDY".  Tell Dave we sent you!
